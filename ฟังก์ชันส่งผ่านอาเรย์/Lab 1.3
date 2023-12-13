@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int *GetSet(int *);
+
+int main() {
+    int *data, num;
+    data = GetSet(&num);
+    free(data);
+    return 0;
+}//End int main
+
+int *GetSet(int *num) {
+    
+    printf("กรอกขนาดของเซต : ");
+    scanf("%d", num);
+
+    int *array = (int *)malloc((*num) * sizeof(int));
+    
+    printf("กรอกตัวประกอบทั้ง %d ของเซต \n", *num);
+    for (int i = 0; i < *num; i++) {
+        printf("ตัวประกอบที่ %d: ", i + 1);
+        scanf("%d", &(array[i]));
+    }//End for
+
+    printf("ขนาดของเซตคือ : %d\n ตัวประกอบในเซตคือ : ", *num);
+    for (int i = 0; i < *num; i++) {
+        printf("%d ", array[i]);
+    }//End for
+
+    return array;
+}//End GetSet
