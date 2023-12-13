@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int GetMatrix(int *row, int *col);
+
+int main() {
+    int data, m, n;
+    data = GetMatrix(&m, &n);
+    return 0;
+}//End int main
+
+int GetMatrix( int *row, int *col) {
+    
+    int a;
+    
+    printf("กรอกจำนวนแถว : ");
+    scanf("%d", row);
+    
+    printf("กรอกจำนวนคอลัม : ");
+    scanf("%d", col);
+    
+    printf("กรอกตัวประกอบใน Matrix \n");
+    for (int i = 0; i < *row; i++) {
+        for (int j = 0; j < *col; j++) {
+            printf("กรอกตัวประใน Matrix ที่ (%d, %d) : ", i + 1, j + 1);
+            scanf("%d", &a);
+        }//End for j
+    }//End for i
+
+    printf("แถว : %d \n", *row);
+    printf("คอลัม : %d \n", *col);
+    printf("ตัวประกอบใน Matrix :\n");
+    for (int i = 0; i < *row; i++) {
+        for (int j = 0; j < *col; j++) {
+            printf("<%d> ", a);
+        }//End for j
+        printf("\n");
+    }//End for i
+
+}//End GetMatrix
