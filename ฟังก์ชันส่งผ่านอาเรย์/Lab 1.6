@@ -1,28 +1,30 @@
 #include <stdio.h>
 
-int GetMatrix(int *row, int *col);
+int* GetMatrix(int *row, int *col);
 
 int main() {
-    int data, m, n;
+    int *data, m, n;
     data = GetMatrix(&m, &n);
+    delete[] data;
     return 0;
 }//End int main
 
-int GetMatrix( int *row, int *col) {
-    
-    int a;
-    
+int* GetMatrix(int *row, int *col) {
+    int *a;
+
     printf("กรอกจำนวนแถว : ");
     scanf("%d", row);
-    
+
     printf("กรอกจำนวนคอลัม : ");
     scanf("%d", col);
-    
+
+    a = new int[*row * *col];
+
     printf("กรอกตัวประกอบใน Matrix \n");
     for (int i = 0; i < *row; i++) {
         for (int j = 0; j < *col; j++) {
             printf("กรอกตัวประใน Matrix ที่ (%d, %d) : ", i + 1, j + 1);
-            scanf("%d", &a);
+            scanf("%d", &a[i * (*col) + j]);
         }//End for j
     }//End for i
 
@@ -31,9 +33,10 @@ int GetMatrix( int *row, int *col) {
     printf("ตัวประกอบใน Matrix :\n");
     for (int i = 0; i < *row; i++) {
         for (int j = 0; j < *col; j++) {
-            printf("<%d> ", a);
+            printf("<%d> ", a[i * (*col) + j]);
         }//End for j
         printf("\n");
     }//End for i
-
-}//End GetMatrix
+    
+    return a;
+}
