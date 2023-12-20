@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+struct student {
+    char name[ 20 ] ;
+    int age ;
+    char sex ;
+    float gpa ;
+} ;
+
+void upgrade( struct student *child ) ;
+
+int main() {
+    struct student aboy ;
+    aboy.sex = 'M' ;
+    aboy.gpa = 3.00 ;
+    upgrade( &aboy ) ;
+    printf( "%.2f", aboy.gpa ) ;
+    return 0 ;
+}//end function
+
+void upgrade(struct student *child) {
+    if (child->sex == 'M') {
+        child->gpa += child->gpa * 0.10;
+    } else if (child->sex == 'F') {
+        child->gpa += child->gpa * 0.20;
+    } else {
+        printf("gpa = ");
+    }//End if
+
+}//End function
+
+//ค่าตัวแปล gpa เพิ่มขึ้น (เนื่องจากเป็น pionter บรรทัดที่ 16 จึงต้อง ใส่ & เพื่อให้สามารถส่งค่าได้ )
