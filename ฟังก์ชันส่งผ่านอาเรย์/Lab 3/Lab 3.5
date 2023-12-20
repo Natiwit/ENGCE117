@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+struct student {
+    char name[50];
+    int age;
+    char grade[5];
+};
+
+struct student (*GetStudent(int *room))[10];
+
+int main() {
+    struct student (*children)[10];
+    int group;
+    children = GetStudent(&group);
+    return 0;
+}//End function
+
+struct student (*GetStudent(int *room))[10] {
+    printf("Enter the number of rooms: ");
+    scanf("%d", room);
+
+    static struct student children[20][10];
+
+    for (int i = 0; i < *room; ++i) {
+        printf("=================================\n");
+        printf("Enter information for room | %d |\n", i + 1);
+        for (int j = 0; j < 10; ++j) {
+            printf("Enter name for student %d: ", j + 1);
+            scanf("%s", children[i][j].name);
+
+            printf("Enter age for student %d: ", j + 1);
+            scanf("%d", &children[i][j].age);
+
+            printf("Enter grade for student %d: ", j + 1);
+            scanf("%s", children[i][j].grade);
+
+            printf("\n--------------------------------------\n");
+        }//End for
+    }//End for
+
+    return children;
+}//End function
