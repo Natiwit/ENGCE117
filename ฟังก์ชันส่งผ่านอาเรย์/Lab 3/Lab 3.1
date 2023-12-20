@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 struct student {
     char name[20];
     int age;
@@ -5,7 +7,7 @@ struct student {
     float gpa;
 };
 
-struct student upgrade(struct student child);
+void upgrade(struct student child);
 
 int main() {
     struct student aboy;
@@ -13,11 +15,10 @@ int main() {
     aboy.gpa = 3.00;
     upgrade(aboy);
     printf("%.2f", aboy.gpa);
-
     return 0;
 }//End function
 
-struct student upgrade(struct student child) {
+void upgrade(struct student child) {
     if (child.sex == 'M') {
         child.gpa += child.gpa * 0.10;
     } else if (child.sex == 'F') {
@@ -25,6 +26,4 @@ struct student upgrade(struct student child) {
     } else {
         printf("gpa = ");
     }//End if
-
-    return child;
 }//End function
