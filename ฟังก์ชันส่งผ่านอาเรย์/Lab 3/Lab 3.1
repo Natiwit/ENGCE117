@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 struct student {
     char name[20];
     int age;
@@ -7,27 +5,26 @@ struct student {
     float gpa;
 };
 
-void upgrade(struct student *child);
+struct student upgrade(struct student child);
 
 int main() {
     struct student aboy;
-    aboy.sex = 'D';
+    aboy.sex = 'M';
     aboy.gpa = 3.00;
-    
-    upgrade(&aboy);
+    aboy = upgrade(aboy);
     printf("%.2f", aboy.gpa);
-    
+
     return 0;
 }//End function
 
-void upgrade(struct student *child) {
-
-    if (child->sex == 'M') {
-        child->gpa += child->gpa * 0.10;
-    } else if(child->sex == 'F'){
-        child->gpa += child->gpa * 0.20;
+struct student upgrade(struct student child) {
+    if (child.sex == 'M') {
+        child.gpa += child.gpa * 0.10;
+    } else if (child.sex == 'F') {
+        child.gpa += child.gpa * 0.20;
     } else {
         printf("gpa = ");
     }//End if
-    
+
+    return child;
 }//End function
